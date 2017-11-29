@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="cn.tedu.users.dao.ShopkeeperDao">
+<select id="findShopkeeperById" resultType="cn.tedu.users.entity.Shopkeeper">
+	      SELECT * FROM S_IT WHERE id=#{id} 
+	  </select>
+
+<select id="findShopkeeperByUname" resultType="cn.tedu.users.entity.Shopkeeper">
+	      SELECT * FROM S_IT WHERE uname=#{uname}
+	  </select>
+	  	
+<select id="findShopkeeperByShopname" resultType="cn.tedu.users.entity.Shopkeeper">
+	      SELECT * FROM S_IT WHERE shopname=#{shopname}
+	  </select>
+	   
+<insert id="saveShopkeeper" parameterType="cn.tedu.users.entity.Shopkeeper" >
+	      INSERT INTO S_IT VALUES(SEQ_S_IT.nextval,#{shopname},#{uname},#{password},#{phone},#{account},#{type} )
+	  </insert>
+	  
+<delete id="deleteShopkeeper">
+	      DELETE FROM S_IT WHERE id=#{id}
+	  </delete>
+	
+<update id="updateShopkeeper"  parameterType="cn.tedu.users.entity.Shopkeeper">
+        UPDATE  S_IT SET shopname=#{shopname},password=#{password},phone=#{phone},account=#{account},type=#{type} 
+         WHERE id=#{id}
+      </update>	
+	
+</mapper>

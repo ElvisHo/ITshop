@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.goods.dao.GoodsDao">
+<select id="findAllGoods" resultType="cn.tedu.goods.entity.Goods">
+	      SELECT * FROM G_IT
+	  </select>
+<select id="findGoodsById" resultType="cn.tedu.goods.entity.Goods">
+	      SELECT * FROM G_IT WHERE id=#{id}
+	  </select>
+
+<select id="findGoodsByHost" resultType="cn.tedu.goods.entity.Goods">
+	      SELECT * FROM G_IT WHERE host=#{host}
+	  </select>
+
+<select id="findGoodsByGoodsnameHost" resultType="cn.tedu.goods.entity.Goods">
+	      SELECT * FROM G_IT WHERE goodsname LIKE concat(concat('%',#{goodsname}),'%')  or host LIKE concat(concat('%',#{host}),'%')
+	  </select>
+	   
+<insert id="saveGoods" parameterType="cn.tedu.goods.entity.Goods" >
+	      INSERT INTO G_IT VALUES(SEQ_G_IT.nextval,#{goodsname},#{num},#{price},#{productiveTime},#{badTime},#{host},#{img})
+	  </insert>
+	  
+<delete id="deleteGoods">
+	      DELETE FROM G_IT WHERE id=#{id}
+	  </delete>
+	
+<update id="updateGoods"  parameterType="cn.tedu.goods.entity.Goods">
+        UPDATE  G_IT SET goodsname=#{goodsname},num=#{num},price=#{price},productiveTime=#{productiveTime},
+        badTime=#{badTime},host=#{host},img=#{img}} WHERE id=#{id}
+      </update>	
+	
+</mapper>

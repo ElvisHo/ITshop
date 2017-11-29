@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="cn.tedu.car.dao.CarDao">
+<select id="findCarByUname" resultType="cn.tedu.car.entity.Car">
+	      SELECT * FROM C_IT WHERE uname=#{uname}
+	  </select>
+	  	
+<select id="findCarByHost" resultType="cn.tedu.car.entity.Car">
+	      SELECT * FROM C_IT WHERE host=#{host}
+	  </select>
+	   
+<insert id="saveCar" parameterType="cn.tedu.car.entity.Car" >
+	      INSERT INTO C_IT VALUES(#{goodsname},#{num},#{price},#{host},#{uname},#{sum},SEQ_C_IT.nextval)
+	  </insert>
+	  
+<delete id="deleteCar">
+	      DELETE FROM C_IT WHERE id=#{id}
+	  </delete>
+	
+<update id="updateCar"  parameterType="cn.tedu.car.entity.Car">
+        UPDATE  C_IT SET goodsname=#{goodsname},num=#{num},price=#{price},host=#{host},uname=#{uname},sum=#{sum} 
+         WHERE id=#{id}
+      </update>	
+	
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- namespace 命名空间 -->
+<mapper namespace="cn.tedu.users.dao.PassengerDao">
+<select id="findPassengerById" resultType="cn.tedu.users.entity.Passenger">
+	      SELECT * FROM P_IT WHERE id=#{id}
+	  </select>
+	
+<select id="findPassengerByUname" resultType="cn.tedu.users.entity.Passenger">
+	      SELECT * FROM P_IT WHERE uname=#{uname}
+	  </select>
+	   
+<insert id="savePassenger" parameterType="cn.tedu.users.entity.Passenger" >
+	      INSERT INTO P_IT VALUES(SEQ_P_IT.nextval,#{uname},#{password},#{phone},#{money},#{type})
+	  </insert>
+	  
+<delete id="deletePassenger">
+	      DELETE FROM P_IT WHERE id=#{id}
+	  </delete>
+	
+<update id="updatePassenger"  parameterType="cn.tedu.users.entity.Passenger">
+        UPDATE  P_IT SET uname=#{uname},password=#{password},phone=#{phone},money=#{money},type=#{type} WHERE id=#{id} 
+      </update>	
+	
+	
+	
+	
+</mapper>
